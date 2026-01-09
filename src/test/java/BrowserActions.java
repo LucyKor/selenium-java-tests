@@ -11,9 +11,8 @@ public class BrowserActions {
         driver = new ChromeDriver();
         driver.get("https://www.google.com");
         navigation("https://www.seznam.cz");
-        navigateBack();
-        navigateForward();
-        refresh();
+        maximize();
+        minimize();
     }
 
     public void navigation(String url) {
@@ -30,5 +29,13 @@ public class BrowserActions {
 
     public void refresh() {
         driver.navigate().refresh();
+    }
+
+    public void maximize() {
+        driver.manage().window().maximize();
+    }
+
+    public void minimize() {
+        driver.manage().window().minimize();
     }
 }
