@@ -1,4 +1,6 @@
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -10,13 +12,17 @@ public class BrowserActions {
     public void firstTest() {
         driver = new ChromeDriver();
         driver.get("https://www.google.com");
-        navigation("https://www.seznam.cz");
-        maximize();
+        navigation("https://www.vital-lumi.com/index.html");
+        getCurrentURL();
+        getTitle();
         minimize();
+        getWindowHandle();
+        driver.switchTo().newWindow(WindowType.TAB);
+        getWindowHandle();
     }
 
     public void navigation(String url) {
-        driver.navigate().to("https://www.seznam.cz");
+        driver.navigate().to("https://www.vital-lumi.com/index.html");
     }
 
     public void navigateBack() {
@@ -37,5 +43,33 @@ public class BrowserActions {
 
     public void minimize() {
         driver.manage().window().minimize();
+    }
+
+    public void setPosition() {
+        driver.manage().window().setPosition(new Point(100, 100));
+    }
+
+    public void fullscreen() {
+        driver.manage().window().fullscreen();
+    }
+
+    public void getCurrentURL() {
+        String URL = driver.getCurrentUrl();
+        System.out.println("Current URL is: " + URL);
+    }
+
+    public void getTitle() {
+        String title = driver.getTitle();
+        System.out.println("Current Page Title:" + title);
+    }
+
+    public void getPageSource() {
+        String pageSource = driver.getPageSource();
+        System.out.println("Page source is: " + pageSource);
+    }
+
+    public void getWindowHandle() {
+        String windowHandle = driver.getWindowHandle();
+        System.out.println("Window Handle is: " + windowHandle);
     }
 }
